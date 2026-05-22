@@ -1,0 +1,314 @@
+# ==================== Python ====================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.env.local
+.env.*.local
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ==================== Data ====================
+# Raw data files
+data/raw/*.json
+data/raw/*.json.gz
+data/raw/*.csv
+data/raw/*.tsv
+data/raw/*.parquet
+data/raw/*.feather
+
+# Processed data files
+data/processed/*.csv
+data/processed/*.pkl
+data/processed/*.npz
+data/processed/*.h5
+data/processed/*.parquet
+
+# Exclude sample data (keep for examples)
+!data/raw/sample_*.csv
+!data/processed/sample_*.pkl
+
+# ==================== Models ====================
+# Trained models
+models/*.pkl
+models/*.h5
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.joblib
+models/*.bin
+
+# Model checkpoints
+checkpoints/
+*.ckpt
+
+# Exclude model architecture files (keep these)
+!models/model_architecture.py
+
+# ==================== MLflow ====================
+mlruns/
+mlartifacts/
+mlflow.db
+mlflow-tracking.db
+
+# ==================== Logs ====================
+logs/
+*.log
+*.out
+*.err
+
+# ==================== IDEs ====================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ==================== OS ====================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ==================== Docker ====================
+*.env.docker
+docker-compose.override.yml
+
+# ==================== Temporary Files ====================
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ==================== Secrets ====================
+secrets/
+*.pem
+*.key
+*.cert
+credentials.json
+service-account.json
+
+# ==================== Database ====================
+*.db
+*.sqlite
+*.sqlite3
+
+# ==================== Notebooks ====================
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Notebook outputs (uncomment to ignore outputs)
+# *.ipynb
+
+# ==================== Testing ====================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ==================== Other ====================
+# Backup files
+*.bak
+*.backup
+
+# Compressed files (usually data)
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Large files
+*.large
+
+# Cache
+.cache/
+*.cache
+
+# Redis dump
+dump.rdb
+
+# Node modules (if using any JS tools)
+node_modules/
+
+# ==================== Project Specific ====================
+# Experiments
+experiments/temp/
+experiments/archive/
+
+# Reports
+reports/*.pdf
+reports/*.docx
+
+# Plots
+plots/*.png
+plots/*.jpg
+
+# Exclude important documentation
+!docs/*.md
+!README.md
+!LICENSE

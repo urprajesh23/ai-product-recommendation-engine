@@ -1,0 +1,80 @@
+user_id,user_name,product_id,product_name,category,rating,date,sentiment
+U037,Daniel Evans,S008,USB-C Hub 7-in-1,Technology,4,2024-01-01,Positive
+U038,Emily Edwards,S010,Artificial Potted Plant,Decor,4,2024-01-02,Positive
+U036,Abigail Parker,S011,Desk Lamp LED Dimmable,Decor,4,2024-01-04,Positive
+U037,Daniel Evans,S012,Mini Fridge 4L,Appliances,3,2024-01-05,Neutral
+U036,Abigail Parker,S005,Gel Pens - 12 Pack,Office Supplies,4,2024-01-06,Positive
+U021,Ethan Wright,S007,Wireless Mouse Silent,Technology,2,2024-01-07,Negative
+U028,Charlotte Nelson,S007,Wireless Mouse Silent,Technology,4,2024-01-07,Positive
+U029,Benjamin Carter,S013,Single Serve Coffee Maker,Appliances,3,2024-01-07,Neutral
+U032,Harper Roberts,S007,Wireless Mouse Silent,Technology,3,2024-01-08,Neutral
+U035,Michael Campbell,S009,Noise Cancelling Earbuds,Technology,2,2024-01-08,Negative
+U023,Mason Hill,S008,USB-C Hub 7-in-1,Technology,5,2024-01-09,Positive
+U028,Charlotte Nelson,S006,Desk Organizer Mesh,Office Supplies,4,2024-01-09,Positive
+U031,Lucas Perez,S003,Bookshelf 5-Tier,Furniture,5,2024-01-09,Positive
+U028,Charlotte Nelson,S010,Artificial Potted Plant,Decor,5,2024-01-11,Positive
+U029,Benjamin Carter,S003,Bookshelf 5-Tier,Furniture,5,2024-01-11,Positive
+U038,Emily Edwards,S012,Mini Fridge 4L,Appliances,4,2024-01-14,Positive
+U021,Ethan Wright,S004,Premium Notebook set of 3,Office Supplies,4,2024-01-16,Positive
+U028,Charlotte Nelson,S008,USB-C Hub 7-in-1,Technology,4,2024-01-18,Positive
+U032,Harper Roberts,S006,Desk Organizer Mesh,Office Supplies,5,2024-01-19,Positive
+U026,Ava Adams,S004,Premium Notebook set of 3,Office Supplies,4,2024-01-20,Positive
+U040,Elizabeth Stewart,S011,Desk Lamp LED Dimmable,Decor,4,2024-01-21,Positive
+U029,Benjamin Carter,S012,Mini Fridge 4L,Appliances,4,2024-01-22,Positive
+U037,Daniel Evans,S011,Desk Lamp LED Dimmable,Decor,5,2024-01-24,Positive
+U023,Mason Hill,S009,Noise Cancelling Earbuds,Technology,3,2024-01-26,Neutral
+U032,Harper Roberts,S004,Premium Notebook set of 3,Office Supplies,4,2024-01-27,Positive
+U035,Michael Campbell,S013,Single Serve Coffee Maker,Appliances,2,2024-01-28,Negative
+U029,Benjamin Carter,S009,Noise Cancelling Earbuds,Technology,5,2024-01-30,Positive
+U036,Abigail Parker,S002,Standing Desk - Motorized,Furniture,3,2024-01-31,Neutral
+U033,Alexander Turner,S002,Standing Desk - Motorized,Furniture,4,2024-02-04,Positive
+U034,Evelyn Phillips,S009,Noise Cancelling Earbuds,Technology,2,2024-02-04,Negative
+U040,Elizabeth Stewart,S006,Desk Organizer Mesh,Office Supplies,4,2024-02-05,Positive
+U031,Lucas Perez,S001,Ergonomic Office Chair,Furniture,5,2024-02-06,Positive
+U022,Sophia Turner,S013,Single Serve Coffee Maker,Appliances,2,2024-02-07,Negative
+U027,James Baker,S004,Premium Notebook set of 3,Office Supplies,2,2024-02-08,Negative
+U039,Matthew Collins,S010,Artificial Potted Plant,Decor,4,2024-02-08,Positive
+U037,Daniel Evans,S003,Bookshelf 5-Tier,Furniture,4,2024-02-13,Positive
+U027,James Baker,S012,Mini Fridge 4L,Appliances,4,2024-02-14,Positive
+U034,Evelyn Phillips,S005,Gel Pens - 12 Pack,Office Supplies,5,2024-02-14,Positive
+U031,Lucas Perez,S013,Single Serve Coffee Maker,Appliances,2,2024-02-15,Negative
+U033,Alexander Turner,S012,Mini Fridge 4L,Appliances,2,2024-02-17,Negative
+U037,Daniel Evans,S013,Single Serve Coffee Maker,Appliances,4,2024-02-17,Positive
+U025,William Green,S006,Desk Organizer Mesh,Office Supplies,5,2024-02-19,Positive
+U034,Evelyn Phillips,S013,Single Serve Coffee Maker,Appliances,3,2024-02-19,Neutral
+U039,Matthew Collins,S013,Single Serve Coffee Maker,Appliances,4,2024-02-20,Positive
+U032,Harper Roberts,S008,USB-C Hub 7-in-1,Technology,5,2024-02-21,Positive
+U039,Matthew Collins,S003,Bookshelf 5-Tier,Furniture,3,2024-02-21,Neutral
+U030,Amelia Mitchell,S011,Desk Lamp LED Dimmable,Decor,3,2024-02-23,Neutral
+U024,Isabella Scott,S007,Wireless Mouse Silent,Technology,4,2024-02-26,Positive
+U023,Mason Hill,S011,Desk Lamp LED Dimmable,Decor,5,2024-02-27,Positive
+U038,Emily Edwards,S008,USB-C Hub 7-in-1,Technology,4,2024-02-27,Positive
+U026,Ava Adams,S009,Noise Cancelling Earbuds,Technology,3,2024-02-29,Neutral
+U040,Elizabeth Stewart,S007,Wireless Mouse Silent,Technology,3,2024-03-03,Neutral
+U024,Isabella Scott,S004,Premium Notebook set of 3,Office Supplies,3,2024-03-05,Neutral
+U030,Amelia Mitchell,S013,Single Serve Coffee Maker,Appliances,4,2024-03-05,Positive
+U026,Ava Adams,S003,Bookshelf 5-Tier,Furniture,4,2024-03-06,Positive
+U028,Charlotte Nelson,S009,Noise Cancelling Earbuds,Technology,5,2024-03-06,Positive
+U030,Amelia Mitchell,S006,Desk Organizer Mesh,Office Supplies,5,2024-03-06,Positive
+U025,William Green,S007,Wireless Mouse Silent,Technology,5,2024-03-07,Positive
+U035,Michael Campbell,S012,Mini Fridge 4L,Appliances,3,2024-03-07,Neutral
+U040,Elizabeth Stewart,S003,Bookshelf 5-Tier,Furniture,3,2024-03-09,Neutral
+U027,James Baker,S007,Wireless Mouse Silent,Technology,4,2024-03-11,Positive
+U038,Emily Edwards,S005,Gel Pens - 12 Pack,Office Supplies,5,2024-03-11,Positive
+U033,Alexander Turner,S003,Bookshelf 5-Tier,Furniture,4,2024-03-13,Positive
+U026,Ava Adams,S007,Wireless Mouse Silent,Technology,4,2024-03-14,Positive
+U034,Evelyn Phillips,S010,Artificial Potted Plant,Decor,5,2024-03-15,Positive
+U025,William Green,S003,Bookshelf 5-Tier,Furniture,3,2024-03-16,Neutral
+U032,Harper Roberts,S003,Bookshelf 5-Tier,Furniture,5,2024-03-17,Positive
+U022,Sophia Turner,S004,Premium Notebook set of 3,Office Supplies,4,2024-03-18,Positive
+U024,Isabella Scott,S003,Bookshelf 5-Tier,Furniture,3,2024-03-18,Neutral
+U024,Isabella Scott,S009,Noise Cancelling Earbuds,Technology,3,2024-03-18,Neutral
+U036,Abigail Parker,S001,Ergonomic Office Chair,Furniture,3,2024-03-18,Neutral
+U021,Ethan Wright,S010,Artificial Potted Plant,Decor,3,2024-03-19,Neutral
+U030,Amelia Mitchell,S010,Artificial Potted Plant,Decor,4,2024-03-19,Positive
+U038,Emily Edwards,S003,Bookshelf 5-Tier,Furniture,3,2024-03-20,Neutral
+U034,Evelyn Phillips,S004,Premium Notebook set of 3,Office Supplies,4,2024-03-21,Positive
+U039,Matthew Collins,S002,Standing Desk - Motorized,Furniture,4,2024-03-23,Positive
+U022,Sophia Turner,S001,Ergonomic Office Chair,Furniture,3,2024-03-28,Neutral
+U035,Michael Campbell,S004,Premium Notebook set of 3,Office Supplies,1,2024-03-28,Negative
+U026,Ava Adams,S010,Artificial Potted Plant,Decor,4,2024-03-30,Positive

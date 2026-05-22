@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Running Nexus AI Recommender — Quick Reference Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #f8f7ff;
+            color: #1a1a2e;
+            padding: 40px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* ---- Header ---- */
+        .header {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 220px; height: 220px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -40px; left: 30px;
+            width: 160px; height: 160px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+        }
+        .header-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 999px;
+            padding: 4px 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .header p {
+            font-size: 1rem;
+            opacity: 0.85;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        .header-meta {
+            margin-top: 20px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .meta-chip {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 999px;
+            padding: 5px 14px;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        /* ---- Answer Box ---- */
+        .answer-box {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 2px solid #86efac;
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+        .answer-icon { font-size: 2.2rem; flex-shrink: 0; margin-top: 2px; }
+        .answer-box h2 { font-size: 1.25rem; font-weight: 800; color: #15803d; margin-bottom: 8px; }
+        .answer-box p { color: #166534; font-size: 0.95rem; line-height: 1.6; }
+        .answer-box strong { color: #14532d; }
+
+        /* ---- Section ---- */
+        .section {
+            background: white;
+            border: 1px solid #e8e4f3;
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(124,58,237,0.06);
+        }
+        .section h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f3f0ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ---- Flow Diagram ---- */
+        .flow {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
+            background: #faf9ff;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #ede9fe;
+        }
+        .flow-step {
+            background: white;
+            border: 1px solid #ddd6fe;
+            border-radius: 10px;
+            padding: 12px 18px;
+            text-align: center;
+            font-size: 0.83rem;
+            color: #5b21b6;
+            font-weight: 600;
+            flex: 1;
+            min-width: 120px;
+        }
+        .flow-arrow {
+            color: #a78bfa;
+            font-size: 1.2rem;
+            padding: 0 6px;
+            flex-shrink: 0;
+        }
+
+        /* ---- Table ---- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        thead {
+            background: #f5f3ff;
+        }
+        th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 700;
+            color: #6d28d9;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        td {
+            padding: 13px 16px;
+            border-bottom: 1px solid #f3f0ff;
+            color: #374151;
+            vertical-align: top;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #faf9ff; }
+
+        /* ---- Code ---- */
+        .code-block {
+            background: #0f0e1a;
+            border-radius: 10px;
+            padding: 18px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.83rem;
+            line-height: 1.7;
+            color: #a78bfa;
+            margin: 12px 0;
+            border: 1px solid #2d2a4a;
+            overflow-x: auto;
+        }
+        .code-inline {
+            background: #f3f0ff;
+            color: #7c3aed;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        /* ---- Tips ---- */
+        .tip-box {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-left: 4px solid #f59e0b;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-top: 20px;
+            font-size: 0.88rem;
+            color: #78350f;
+            line-height: 1.6;
+        }
+        .tip-box strong { color: #92400e; }
+
+        /* ---- Situation chips ---- */
+        .situation { font-weight: 600; color: #1a1a2e; }
+        .cmd { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: #7c3aed; background: #f3f0ff; padding: 3px 8px; border-radius: 5px; }
+
+        /* ---- Container status ---- */
+        .container-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .container-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+        }
+        .status-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: #22c55e;
+            flex-shrink: 0;
+            box-shadow: 0 0 6px rgba(34,197,94,0.5);
+        }
+        .container-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1a1a2e;
+            flex: 1;
+        }
+        .container-role {
+            font-size: 0.77rem;
+            color: #6b7280;
+        }
+
+        /* ---- Footer ---- */
+        .footer {
+            margin-top: 32px;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #e8e4f3;
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+        .footer strong { color: #7c3aed; }
+
+        /* ---- Print Styles ---- */
+        @media print {
+            body { padding: 0; background: white; }
+            .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .answer-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .flow { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            @page { margin: 18mm 15mm; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <div class="header">
+        <div class="header-tag">📘 Quick Reference Guide</div>
+        <h1>How to Access Your Nexus AI Recommender</h1>
+        <p>Everything you need to know about running and accessing your project from any browser — no commands required when Docker is running.</p>
+        <div class="header-meta">
+            <span class="meta-chip">🐳 Docker Desktop</span>
+            <span class="meta-chip">🌐 localhost:8000</span>
+            <span class="meta-chip">⚡ FastAPI + Redis</span>
+            <span class="meta-chip">Generated: May 2026</span>
+        </div>
+    </div>
+
+    <!-- ========== DIRECT ANSWER ========== -->
+    <div class="answer-box">
+        <div class="answer-icon">✅</div>
+        <div>
+            <h2>Yes — Just open your browser and type localhost:8000</h2>
+            <p>As long as <strong>Docker Desktop is running</strong> with your containers active, your entire project is live in the background. You do <strong>not</strong> need to type any command in PowerShell or VS Code. Simply open Chrome, Edge, or any browser and navigate to <strong>localhost:8000</strong>.</p>
+        </div>
+    </div>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <div class="section">
+        <h2>⚙️ How It Works</h2>
+        <div class="flow">
+            <div class="flow-step">🐳 Docker Desktop<br>Running</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">recommender-api<br>Container Active<br>on port 8000</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">Open Browser<br>→ localhost:8000</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">✅ Your Project<br>Loads Instantly</div>
+        </div>
+    </div>
+
+    <!-- ========== ACTIVE CONTAINERS ========== -->
+    <div class="section">
+        <h2>🐳 Your 3 Active Docker Containers</h2>
+        <p style="color:#6b7280; font-size:0.87rem; margin-bottom:16px;">Open Docker Desktop and confirm all three show a green status indicator before opening the browser.</p>
+        <div class="container-list">
+            <div class="container-item">
+                <div class="status-dot"></div>
+                <div class="container-name">recommender-api</div>
+                <div class="container-role">FastAPI server — serves the UI &amp; all API endpoints on port 8000</div>
+            </div>
+            <div class="container-item">
+                <div class="status-dot"></div>
+                <div class="container-name">recommender-redis</div>
+                <div class="container-role">Redis cache — stores recommendations &amp; A/B test metrics</div>
+            </div>
+            <div class="container-item">
+                <div class="status-dot"></div>
+                <div class="container-name">recommender-mlflow</div>
+                <div class="container-role">MLflow tracking server — model versioning &amp; experiment logs</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== WHEN DO YOU NEED COMMANDS ========== -->
+    <div class="section">
+        <h2>💻 The Only Times You Need a PowerShell Command</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Situation</th>
+                    <th>Command to Run</th>
+                    <th>Where</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="situation">🔄 Starting the project after a PC restart</td>
+                    <td><span class="cmd">docker compose up -d</span></td>
+                    <td>PowerShell in project folder</td>
+                </tr>
+                <tr>
+                    <td class="situation">🔨 Rebuilding after you changed code</td>
+                    <td><span class="cmd">docker compose up -d --build</span></td>
+                    <td>PowerShell in project folder</td>
+                </tr>
+                <tr>
+                    <td class="situation">⛔ Stopping the project to free memory</td>
+                    <td><span class="cmd">docker compose down</span></td>
+                    <td>PowerShell in project folder</td>
+                </tr>
+                <tr>
+                    <td class="situation">🔍 Checking which containers are running</td>
+                    <td><span class="cmd">docker ps</span></td>
+                    <td>Any PowerShell window</td>
+                </tr>
+                <tr>
+                    <td class="situation">📋 Reading live server logs</td>
+                    <td><span class="cmd">docker logs recommender-api</span></td>
+                    <td>Any PowerShell window</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="code-block">
+# Navigate to your project folder first, then run commands:
+cd "D:\Product Recommender System\product-recommender"
+
+# Start everything (use this after a PC restart):
+docker compose up -d
+
+# Rebuild after code changes:
+docker compose up -d --build
+
+# Stop everything:
+docker compose down
+        </div>
+    </div>
+
+    <!-- ========== USEFUL URLS ========== -->
+    <div class="section">
+        <h2>🌐 Useful URLs (while Docker is running)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>What Opens</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="code-inline">localhost:8000</span></td>
+                    <td>🏠 Main Nexus AI Dashboard — the full multi-persona UI</td>
+                </tr>
+                <tr>
+                    <td><span class="code-inline">localhost:8000/docs</span></td>
+                    <td>📄 Swagger API documentation — test all API endpoints</td>
+                </tr>
+                <tr>
+                    <td><span class="code-inline">localhost:8000/health</span></td>
+                    <td>💚 Health check — confirms models, Redis, and API are all up</td>
+                </tr>
+                <tr>
+                    <td><span class="code-inline">localhost:8000/ab-test/stats</span></td>
+                    <td>📊 Raw A/B testing metrics as JSON (impressions, clicks, CTR)</td>
+                </tr>
+                <tr>
+                    <td><span class="code-inline">localhost:5000</span></td>
+                    <td>🧪 MLflow UI — model experiment tracking &amp; version history</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="tip-box">
+            <strong>💡 Pro Tip:</strong> Bookmark <strong>localhost:8000</strong> in your browser. Whenever Docker Desktop is running, your full project is accessible instantly — no terminal needed. You can also set Docker Desktop to <strong>start on boot</strong> in its settings so your project is always ready when your PC starts.
+        </div>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <div class="footer">
+        Generated for <strong>Nexus AI Product Recommender System</strong> &nbsp;|&nbsp;
+        Project Path: <strong>D:\Product Recommender System\product-recommender</strong> &nbsp;|&nbsp;
+        May 2026
+    </div>
+
+</body>
+</html>

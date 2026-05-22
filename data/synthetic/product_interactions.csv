@@ -1,0 +1,68 @@
+user_id,user_name,product_id,product_name,category,rating,date,sentiment
+U001,Alice Johnson,P001,Sony WH-1000XM5 Headphones,Audio,5,2024-01-05,Positive
+U001,Alice Johnson,P003,Apple AirPods Pro,Audio,4,2024-01-18,Positive
+U001,Alice Johnson,P007,JBL Charge 5 Bluetooth Speaker,Audio,5,2024-02-10,Positive
+U002,Bob Smith,P002,Logitech MX Master 3 Mouse,Peripherals,5,2024-01-07,Positive
+U002,Bob Smith,P005,Mechanical RGB Keyboard,Peripherals,4,2024-01-22,Positive
+U002,Bob Smith,P004,Samsung 27-inch 4K Monitor,Displays,5,2024-02-15,Positive
+U002,Bob Smith,P010,Razer BlackWidow V4 Keyboard,Gaming,3,2024-03-01,Neutral
+U003,Carol Davis,P008,Apple iPad Pro 12.9-inch,Tablets,5,2024-01-10,Positive
+U003,Carol Davis,P014,Microsoft Surface Pro 9,Tablets,4,2024-02-05,Positive
+U003,Carol Davis,P009,Samsung Galaxy Watch 6,Wearables,5,2024-03-12,Positive
+U004,David Lee,P006,ASUS ROG Gladius III Mouse,Gaming,5,2024-01-14,Positive
+U004,David Lee,P010,Razer BlackWidow V4 Keyboard,Gaming,5,2024-01-28,Positive
+U004,David Lee,P011,LG 32-inch UltraWide Monitor,Displays,4,2024-02-18,Positive
+U004,David Lee,P001,Sony WH-1000XM5 Headphones,Audio,3,2024-03-05,Neutral
+U005,Emma Wilson,P012,Bose QuietComfort 45 Headphones,Audio,5,2024-01-16,Positive
+U005,Emma Wilson,P001,Sony WH-1000XM5 Headphones,Audio,5,2024-02-01,Positive
+U005,Emma Wilson,P015,Fitbit Charge 6,Wearables,4,2024-02-20,Positive
+U006,Frank Brown,P004,Samsung 27-inch 4K Monitor,Displays,4,2024-01-20,Positive
+U006,Frank Brown,P011,LG 32-inch UltraWide Monitor,Displays,5,2024-02-08,Positive
+U006,Frank Brown,P013,Logitech C920 HD Webcam,Peripherals,3,2024-03-02,Neutral
+U006,Frank Brown,P002,Logitech MX Master 3 Mouse,Peripherals,5,2024-03-18,Positive
+U007,Grace Chen,P003,Apple AirPods Pro,Audio,5,2024-01-25,Positive
+U007,Grace Chen,P009,Samsung Galaxy Watch 6,Wearables,4,2024-02-12,Positive
+U007,Grace Chen,P008,Apple iPad Pro 12.9-inch,Tablets,5,2024-03-08,Positive
+U008,Henry Taylor,P006,ASUS ROG Gladius III Mouse,Gaming,4,2024-01-30,Positive
+U008,Henry Taylor,P010,Razer BlackWidow V4 Keyboard,Gaming,5,2024-02-14,Positive
+U008,Henry Taylor,P001,Sony WH-1000XM5 Headphones,Audio,2,2024-03-10,Negative
+U009,Isabella Martinez,P007,JBL Charge 5 Bluetooth Speaker,Audio,5,2024-01-12,Positive
+U009,Isabella Martinez,P012,Bose QuietComfort 45 Headphones,Audio,5,2024-02-03,Positive
+U009,Isabella Martinez,P015,Fitbit Charge 6,Wearables,3,2024-02-28,Neutral
+U010,James Anderson,P002,Logitech MX Master 3 Mouse,Peripherals,5,2024-01-08,Positive
+U010,James Anderson,P005,Mechanical RGB Keyboard,Peripherals,5,2024-02-16,Positive
+U010,James Anderson,P004,Samsung 27-inch 4K Monitor,Displays,4,2024-03-04,Positive
+U010,James Anderson,P013,Logitech C920 HD Webcam,Peripherals,4,2024-03-20,Positive
+U011,Karen White,P014,Microsoft Surface Pro 9,Tablets,5,2024-01-17,Positive
+U011,Karen White,P008,Apple iPad Pro 12.9-inch,Tablets,4,2024-02-09,Positive
+U011,Karen White,P009,Samsung Galaxy Watch 6,Wearables,5,2024-03-14,Positive
+U012,Liam Jackson,P006,ASUS ROG Gladius III Mouse,Gaming,5,2024-01-22,Positive
+U012,Liam Jackson,P010,Razer BlackWidow V4 Keyboard,Gaming,5,2024-02-11,Positive
+U012,Liam Jackson,P011,LG 32-inch UltraWide Monitor,Displays,4,2024-02-25,Positive
+U012,Liam Jackson,P007,JBL Charge 5 Bluetooth Speaker,Audio,3,2024-03-16,Neutral
+U013,Mia Thompson,P003,Apple AirPods Pro,Audio,5,2024-01-26,Positive
+U013,Mia Thompson,P012,Bose QuietComfort 45 Headphones,Audio,4,2024-02-13,Positive
+U013,Mia Thompson,P015,Fitbit Charge 6,Wearables,5,2024-03-06,Positive
+U014,Noah Garcia,P005,Mechanical RGB Keyboard,Peripherals,4,2024-01-31,Positive
+U014,Noah Garcia,P002,Logitech MX Master 3 Mouse,Peripherals,5,2024-02-19,Positive
+U014,Noah Garcia,P004,Samsung 27-inch 4K Monitor,Displays,5,2024-03-11,Positive
+U015,Olivia Harris,P001,Sony WH-1000XM5 Headphones,Audio,5,2024-01-09,Positive
+U015,Olivia Harris,P007,JBL Charge 5 Bluetooth Speaker,Audio,4,2024-02-06,Positive
+U015,Olivia Harris,P012,Bose QuietComfort 45 Headphones,Audio,5,2024-02-22,Positive
+U016,Peter Clark,P013,Logitech C920 HD Webcam,Peripherals,5,2024-01-15,Positive
+U016,Peter Clark,P002,Logitech MX Master 3 Mouse,Peripherals,4,2024-02-04,Positive
+U016,Peter Clark,P011,LG 32-inch UltraWide Monitor,Displays,3,2024-03-09,Neutral
+U017,Quinn Lewis,P009,Samsung Galaxy Watch 6,Wearables,4,2024-01-21,Positive
+U017,Quinn Lewis,P015,Fitbit Charge 6,Wearables,5,2024-02-17,Positive
+U017,Quinn Lewis,P008,Apple iPad Pro 12.9-inch,Tablets,4,2024-03-13,Positive
+U018,Rachel Walker,P010,Razer BlackWidow V4 Keyboard,Gaming,5,2024-01-27,Positive
+U018,Rachel Walker,P006,ASUS ROG Gladius III Mouse,Gaming,5,2024-02-23,Positive
+U018,Rachel Walker,P004,Samsung 27-inch 4K Monitor,Displays,4,2024-03-19,Positive
+U019,Samuel Hall,P005,Mechanical RGB Keyboard,Peripherals,3,2024-01-13,Neutral
+U019,Samuel Hall,P013,Logitech C920 HD Webcam,Peripherals,4,2024-02-07,Positive
+U019,Samuel Hall,P014,Microsoft Surface Pro 9,Tablets,5,2024-03-03,Positive
+U019,Samuel Hall,P001,Sony WH-1000XM5 Headphones,Audio,5,2024-03-21,Positive
+U020,Tina Young,P003,Apple AirPods Pro,Audio,5,2024-01-19,Positive
+U020,Tina Young,P007,JBL Charge 5 Bluetooth Speaker,Audio,5,2024-02-24,Positive
+U020,Tina Young,P012,Bose QuietComfort 45 Headphones,Audio,4,2024-03-07,Positive
+U020,Tina Young,P015,Fitbit Charge 6,Wearables,5,2024-03-22,Positive

@@ -1,0 +1,25 @@
+collaborative_filtering:
+  factors: 128
+  regularization: 0.01
+  iterations: 50
+  alpha: 40
+
+content_based:
+  no_components: 128
+  loss: warp
+  learning_rate: 0.05
+  epochs: 30
+
+hybrid:
+  cf_weight: 0.6
+  cb_weight: 0.4
+
+data:
+  min_user_interactions: 5
+  min_item_interactions: 5
+  test_size: 0.2
+  random_state: 42
+
+evaluation:
+  k_values: [5, 10, 20]
+  cv_folds: 5

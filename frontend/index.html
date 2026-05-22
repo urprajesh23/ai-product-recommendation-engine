@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus | AI Product Recommender Platform</title>
+    <meta name="description" content="An AI-powered product recommendation platform with live A/B testing, real-time analytics, and multi-persona tools for shoppers, merchants, and data scientists.">
+    <link rel="stylesheet" href="styles.css?v=10">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="glass-header">
+        <div class="logo">
+            <span class="gradient-text">NEXUS</span>
+            <span class="logo-sub">AI Recommender</span>
+        </div>
+        <nav class="persona-nav">
+            <button class="persona-btn active" id="btn-shopper" data-target="view-shopper">
+                <span class="persona-icon">🛍️</span>
+                <span>End User</span>
+            </button>
+            <button class="persona-btn" id="btn-business" data-target="view-business">
+                <span class="persona-icon">📈</span>
+                <span>Business</span>
+            </button>
+            <button class="persona-btn" id="btn-aiml" data-target="view-aiml">
+                <span class="persona-icon">🧠</span>
+                <span>AI / ML</span>
+            </button>
+        </nav>
+        <button id="stats-btn" class="glow-on-hover">📊 Live A/B Stats</button>
+    </header>
+
+    <!-- ===================== VIEW: END SHOPPER ===================== -->
+    <main id="view-shopper" class="view active container">
+
+        <!-- Dataset Table Section -->
+        <section class="glass-panel dataset-section">
+            <div class="section-header">
+                <div>
+                    <h2>📂 Synthetic Dataset Preview</h2>
+                    <p class="section-sub">A human-readable sample of user–product interactions powering the recommender engine</p>
+                </div>
+                <div class="dataset-meta" id="dataset-meta">
+                    <select id="dataset-selector" class="dataset-select">
+                        <option value="tech">Electronics & Tech Dataset</option>
+                        <option value="superstore">Superstore & Furniture Dataset</option>
+                    </select>
+                    <span class="meta-pill" id="meta-rows">Loading...</span>
+                    <span class="meta-pill" id="meta-total">Total rows</span>
+                    <span class="meta-pill" id="meta-cols">8 columns</span>
+                    <a href="/dataset/synthetic/download?dataset=tech" id="download-dataset-btn" download="nexus_product_interactions.csv" class="download-btn" title="Download CSV">⬇️ Download CSV</a>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="dataset-table" class="data-table">
+                    <thead id="dataset-thead"></thead>
+                    <tbody id="dataset-tbody">
+                        <tr><td colspan="7" class="loading-cell"><div class="spinner-sm"></div> Fetching dataset...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-footer">
+                <span id="table-row-count">Showing rows</span>
+                <div class="column-legend">
+                    <span class="legend-item"><span class="legend-dot purple"></span>user_name: Customer name</span>
+                    <span class="legend-item"><span class="legend-dot blue"></span>product_name: Product purchased</span>
+                    <span class="legend-item"><span class="legend-dot orange"></span>rating: 1–5 star rating</span>
+                    <span class="legend-item"><span class="legend-dot green"></span>sentiment: Positive / Neutral / Negative</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendation Dashboard -->
+        <section class="glass-panel hero-section">
+            <div class="hero-text">
+                <h1>Discover your <span class="gradient-text">next obsession.</span></h1>
+                <p>Our hybrid AI analyzes your purchase patterns to surface the perfect products — personalized for you, in real-time.</p>
+            </div>
+            <div class="search-container">
+                <div class="input-wrapper">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="user-id-input" placeholder="Enter a User ID from the table above" value="A2SUAM1J3GNN3B">
+                </div>
+                <button id="recommend-btn" class="primary-btn">Get Recommendations <span class="btn-arrow">→</span></button>
+            </div>
+            <div id="loading" class="loading-state hidden">
+                <div class="spinner"></div>
+                <p>Analyzing behavior patterns with AI...</p>
+            </div>
+        </section>
+
+        <section id="results-section" class="hidden">
+            <div class="results-header">
+                <div>
+                    <h2>Recommended for you</h2>
+                    <p class="results-sub" id="results-sub-text">Personalized picks powered by collaborative filtering</p>
+                </div>
+                <div class="badge-wrapper">
+                    <div class="model-badge" id="model-badge">Model V1</div>
+                    <button class="secondary-btn" id="refresh-btn">🔄 Shuffle Model</button>
+                </div>
+            </div>
+            <div class="product-grid" id="product-grid"></div>
+        </section>
+
+    </main>
+
+    <!-- ===================== VIEW: BUSINESS ===================== -->
+    <main id="view-business" class="view container hidden">
+
+        <section class="glass-panel">
+            <div class="section-header">
+                <div>
+                    <h2>📈 Merchant Integration Hub</h2>
+                    <p class="section-sub">Drop Nexus AI recommendations into your existing storefront in under 5 minutes</p>
+                </div>
+                <span class="badge-pill success">Production Ready</span>
+            </div>
+
+            <!-- Feature Cards -->
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Sub-15ms Latency</h3>
+                    <p>Redis-powered caching delivers recommendations faster than a page blink.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔀</div>
+                    <h3>Live A/B Testing</h3>
+                    <p>Automatically split traffic 50/50 between model variants and measure real CTR.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❄️</div>
+                    <h3>Cold-Start Handling</h3>
+                    <p>New users with no history are served trending products — no empty shelf.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>REST API</h3>
+                    <p>Simple JSON API compatible with any tech stack — React, Vue, Shopify, or plain HTML.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integration Steps -->
+        <section class="glass-panel">
+            <h2>🚀 3-Step Integration</h2>
+            <p class="section-sub">Copy-paste these snippets into your existing storefront to go live instantly.</p>
+
+            <div class="step-card">
+                <div class="step-number">Step 1</div>
+                <h3>Fetch Personalized Recommendations</h3>
+                <p>Call the <code>/recommend</code> endpoint with the currently logged-in user's ID. The engine will automatically A/B test between models.</p>
+                <div class="code-block-wrapper">
+                    <button class="copy-btn" data-target="code-step1">📋 Copy</button>
+                    <pre id="code-step1"><code><span class="c-comment">// Add this to your product listing page</span>
+<span class="c-keyword">async function</span> <span class="c-fn">loadNexusRecommendations</span>(userId) {
+  <span class="c-keyword">const</span> response = <span class="c-keyword">await</span> fetch(<span class="c-str">'http://your-nexus-api.com/recommend'</span>, {
+    method: <span class="c-str">'POST'</span>,
+    headers: { <span class="c-str">'Content-Type'</span>: <span class="c-str">'application/json'</span> },
+    body: JSON.stringify({
+      user_id: userId,          <span class="c-comment">// The logged-in customer's ID</span>
+      n_recommendations: <span class="c-num">8</span>,   <span class="c-comment">// Number of products to show</span>
+      filter_purchased: <span class="c-bool">true</span>  <span class="c-comment">// Don't re-recommend bought items</span>
+    })
+  });
+  <span class="c-keyword">const</span> data = <span class="c-keyword">await</span> response.json();
+  renderProductCards(data.recommendations); <span class="c-comment">// Your own render function</span>
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">Step 2</div>
+                <h3>Track Customer Clicks (A/B Signal)</h3>
+                <p>When a customer clicks a recommended product, fire this event. This feeds the live A/B testing engine so it can determine the winning model.</p>
+                <div class="code-block-wrapper">
+                    <button class="copy-btn" data-target="code-step2">📋 Copy</button>
+                    <pre id="code-step2"><code><span class="c-comment">// Attach to your product card "View" or "Add to Cart" button</span>
+<span class="c-keyword">function</span> <span class="c-fn">onProductClick</span>(userId, itemId, variant) {
+  fetch(<span class="c-str">'http://your-nexus-api.com/ab-test/click'</span>, {
+    method: <span class="c-str">'POST'</span>,
+    headers: { <span class="c-str">'Content-Type'</span>: <span class="c-str">'application/json'</span> },
+    body: JSON.stringify({
+      user_id: userId,  <span class="c-comment">// Who clicked</span>
+      item_id: itemId,  <span class="c-comment">// What they clicked</span>
+      variant: variant  <span class="c-comment">// 'v1' or 'v2' from /recommend response</span>
+    })
+  });
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">Step 3</div>
+                <h3>Monitor Your Live A/B Dashboard</h3>
+                <p>Poll the stats endpoint to track which AI model is winning for your customers. Use this to make data-driven deployment decisions.</p>
+                <div class="code-block-wrapper">
+                    <button class="copy-btn" data-target="code-step3">📋 Copy</button>
+                    <pre id="code-step3"><code><span class="c-comment">// Call this to get live performance metrics for your dashboard</span>
+<span class="c-keyword">async function</span> <span class="c-fn">getABStats</span>() {
+  <span class="c-keyword">const</span> response = <span class="c-keyword">await</span> fetch(<span class="c-str">'http://your-nexus-api.com/ab-test/stats'</span>);
+  <span class="c-keyword">const</span> stats = <span class="c-keyword">await</span> response.json();
+  
+  console.log(<span class="c-str">`Model V1 CTR: <span class="c-tpl">${(stats.v1_ctr * 100).toFixed(2)}</span>%`</span>);
+  console.log(<span class="c-str">`Model V2 CTR: <span class="c-tpl">${(stats.v2_ctr * 100).toFixed(2)}</span>%`</span>);
+  console.log(<span class="c-str">`Winner: <span class="c-tpl">${stats.winner || 'Need more data'}</span>`</span>);
+  
+  <span class="c-comment">// Automatically promote the winner when you have enough data</span>
+  <span class="c-keyword">if</span> (stats.winner === <span class="c-str">'v2 (Hybrid)'</span>) deployHybridModel();
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live API Tester -->
+        <section class="glass-panel">
+            <h2>🧪 Live API Tester</h2>
+            <p class="section-sub">Test the recommendation engine directly — no setup required.</p>
+            <div class="api-tester">
+                <div class="api-input-row">
+                    <label>User ID</label>
+                    <input type="text" id="biz-user-id" value="A1A5KUIIIHFF4U" class="api-input">
+                    <label>Count</label>
+                    <input type="number" id="biz-count" value="5" min="1" max="20" class="api-input-sm">
+                    <button id="biz-test-btn" class="primary-btn">Send Request →</button>
+                </div>
+                <div class="api-response-wrapper">
+                    <div class="api-response-header">
+                        <span>Response</span>
+                        <span id="biz-response-status" class="status-pill"></span>
+                    </div>
+                    <pre id="biz-response" class="api-response">// Response will appear here after sending a request...</pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== VIEW: AI / ML / DATA SCIENCE ===================== -->
+    <main id="view-aiml" class="view container hidden">
+
+        <!-- STEP 1 — Dataset Selection (always first) -->
+        <section class="glass-panel" id="aiml-dataset-section">
+            <div class="section-header">
+                <div>
+                    <h2>📤 Choose Your Dataset</h2>
+                    <p class="section-sub">Select a built-in dataset to explore, or upload your own CSV to analyse the full ML pipeline with your data</p>
+                </div>
+                <span class="badge-pill" id="active-ds-badge">Electronics &amp; Tech</span>
+            </div>
+
+            <!-- Dataset option pills -->
+            <div class="ds-option-row">
+                <button class="ds-option-btn active" data-ds="tech">
+                    <span class="ds-opt-icon">⚡</span>
+                    <div>
+                        <div class="ds-opt-title">Electronics &amp; Tech</div>
+                        <div class="ds-opt-sub">67 interactions · 20 users · Amazon dataset</div>
+                    </div>
+                </button>
+                <button class="ds-option-btn" data-ds="superstore">
+                    <span class="ds-opt-icon">🛒</span>
+                    <div>
+                        <div class="ds-opt-title">Superstore &amp; Furniture</div>
+                        <div class="ds-opt-sub">68 interactions · 22 users · Retail dataset</div>
+                    </div>
+                </button>
+                <button class="ds-option-btn" data-ds="custom">
+                    <span class="ds-opt-icon">📁</span>
+                    <div>
+                        <div class="ds-opt-title">Upload Custom CSV</div>
+                        <div class="ds-opt-sub">Bring your own interaction data</div>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Custom upload zone (shown only when "custom" is selected) -->
+            <div id="custom-upload-area" class="hidden" style="margin-top:18px">
+                <p class="section-sub" style="margin-bottom:12px">Required columns: <code>user_id</code>, <code>item_id</code>, <code>rating</code></p>
+                <div class="upload-zone" id="upload-zone">
+                    <div class="upload-icon">📁</div>
+                    <p>Drag &amp; drop a CSV file here, or click to browse</p>
+                    <p class="upload-hint">Supported format: CSV with user_id, item_id, rating columns</p>
+                    <input type="file" id="file-input" accept=".csv" class="file-input-hidden">
+                    <button class="secondary-btn" id="browse-btn">Browse Files</button>
+                </div>
+                <div id="upload-result" class="upload-result hidden"></div>
+            </div>
+        </section>
+
+        <!-- Active dataset context banner -->
+        <div class="ds-context-banner" id="ds-context-banner">
+            <span id="ds-banner-icon">⚡</span>
+            <div>
+                <div class="ds-banner-title" id="ds-banner-title">Electronics &amp; Tech Dataset</div>
+                <div class="ds-banner-sub" id="ds-banner-sub">Showing Model Insights, Live State and Inference Experiment for this dataset</div>
+                <button class="secondary-btn" id="toggle-stats-btn" style="margin-top: 12px; padding: 6px 12px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px;">
+                    📊 Statistical Overview
+                </button>
+            </div>
+        </div>
+
+        <!-- Quick Reference Table / Explore Data -->
+        <div class="quick-reference-container hidden" id="dataset-explore-container">
+            <h3 class="qr-title">Pandas DataFrame Exploration</h3>
+            <div class="exp-loading"><div class="spinner-sm"></div> Running pandas functions on dataset...</div>
+        </div>
+
+        <!-- STEP 2 — Model Insights -->
+        <section class="glass-panel">
+            <div class="section-header">
+                <div>
+                    <h2>🧠 Model Insights &amp; ML Lab</h2>
+                    <p class="section-sub">Architecture, parameters and performance metrics for the active dataset</p>
+                </div>
+                <span class="badge-pill">Research Mode</span>
+            </div>
+
+            <!-- Model Architecture Cards -->
+            <div class="ml-grid">
+                <div class="ml-card v1-card">
+                    <div class="ml-card-header">
+                        <span class="ml-tag">Variant 1</span>
+                        <h3>SVD Collaborative Filtering</h3>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">Algorithm <button class="param-help" data-tip="The AI technique used. ALS (Alternating Least Squares) works by finding patterns in which products users interact with — it learns hidden preferences without needing explicit ratings.">?</button></span>
+                        <span class="ml-val">Alternating Least Squares (ALS)</span>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">Library <button class="param-help" data-tip="The open-source software library powering the AI. 'implicit' is a fast Python library built specifically for recommendation systems based on implicit user feedback (views, clicks, purchases).">?</button></span>
+                        <span class="ml-val">implicit</span>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">Factors <button class="param-help" data-tip="Think of this as the number of 'taste dimensions' the AI uses to understand you. A value of 100 means the model captures 100 different hidden patterns — e.g. 'likes gaming gear', 'prefers wireless', etc. Higher = more nuanced but slower to train.">?</button></span>
+                        <span class="ml-val" id="v1-factors">100</span>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">Iterations <button class="param-help" data-tip="How many times the AI goes through all the data to improve itself. Like a student revising their notes — more passes = better understanding. 15 passes is a good balance between accuracy and training speed.">?</button></span>
+                        <span class="ml-val" id="v1-iterations">15</span>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">Regularization <button class="param-help" data-tip="A safety parameter that stops the AI from over-memorising the training data. Without it, the model might give perfect answers on known data but fail on new users. 0.01 is a small amount — just enough to keep predictions balanced.">?</button></span>
+                        <span class="ml-val">0.01</span>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">Training Rows <button class="param-help" data-tip="The number of user-product interaction records used to train this model. More rows = the AI has more examples to learn from.">?</button></span>
+                        <span class="ml-val" id="v1-rows">—</span>
+                    </div>
+                    <div class="ml-metric-row highlight-row">
+                        <span class="param-label">Precision@10 <button class="param-help" data-tip="Out of the top 10 products recommended, how many were actually relevant? A score of 0.41 means ~4 out of 10 recommendations are genuinely useful to the user. Higher is better.">?</button></span>
+                        <span class="ml-val good" id="v1-precision">0.41</span>
+                    </div>
+                    <div class="ml-metric-row highlight-row">
+                        <span class="param-label">Recall@10 <button class="param-help" data-tip="Out of ALL products the user would have liked, how many did we manage to surface in the top 10? A score of 0.38 means the AI finds 38% of the user's ideal products. Recall and Precision together tell the full accuracy story.">?</button></span>
+                        <span class="ml-val good" id="v1-recall">0.38</span>
+                    </div>
+                    <div class="ml-metric-row highlight-row">
+                        <span class="param-label">NDCG@10 <button class="param-help" data-tip="Normalized Discounted Cumulative Gain — a score that rewards putting the BEST recommendations at the TOP of the list. 0.44 means the AI does a good job of ordering results so the most relevant product appears first.">?</button></span>
+                        <span class="ml-val good" id="v1-ndcg">0.44</span>
+                    </div>
+                </div>
+                <div class="ml-card v2-card">
+                    <div class="ml-card-header">
+                        <span class="ml-tag">Variant 2</span>
+                        <h3>Hybrid Recommender</h3>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">Algorithm <button class="param-help" data-tip="This model combines two AI engines: ALS (which learns from purchase history) and LightFM (which also understands product features like category and name). Together they give smarter, more diverse recommendations.">?</button></span>
+                        <span class="ml-val">ALS + LightFM</span>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">Library <button class="param-help" data-tip="Two open-source Python libraries working together: 'implicit' handles the purchase history side, while 'lightfm' handles the product features side — combining them creates a more powerful recommendation engine.">?</button></span>
+                        <span class="ml-val">implicit + lightfm</span>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">CF Weight <button class="param-help" data-tip="CF stands for Collaborative Filtering — recommendations based on what similar users bought. A weight of 0.7 means 70% of the final recommendation score comes from 'what people like you bought'. It gets more influence because it's usually more accurate.">?</button></span>
+                        <span class="ml-val">0.7</span>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">CB Weight <button class="param-help" data-tip="CB stands for Content-Based — recommendations based on the product itself (its category, name, features). A weight of 0.3 means 30% of the score comes from product characteristics. This helps when a user is new or the item is brand new.">?</button></span>
+                        <span class="ml-val">0.3</span>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">Cold-Start <button class="param-help" data-tip="Cold-start is the challenge of recommending products to a BRAND NEW user who has no purchase history. When enabled, the system automatically falls back to showing the most popular products instead of leaving them with nothing.">?</button></span>
+                        <span class="ml-val">✅ Enabled</span>
+                    </div>
+                    <div class="ml-metric-row">
+                        <span class="param-label">Dataset Size <button class="param-help" data-tip="How large the active dataset is — more data generally means a smarter, more personalised model.">?</button></span>
+                        <span class="ml-val" id="v2-size">—</span>
+                    </div>
+                    <div class="ml-metric-row highlight-row">
+                        <span class="param-label">Strategy <button class="param-help" data-tip="When a new user has no history, instead of showing nothing, the system falls back to 'Popularity Fallback' — it shows the most-purchased products across all users. Think of it as the 'bestsellers shelf' for first-time visitors.">?</button></span>
+                        <span class="ml-val good">Popularity Fallback</span>
+                    </div>
+                    <div class="ml-metric-row highlight-row">
+                        <span class="param-label">Features <button class="param-help" data-tip="The AI represents each user and product as a list of numbers called 'embeddings'. User embeddings capture taste, product embeddings capture characteristics. The AI matches them to find products a user is likely to love.">?</button></span>
+                        <span class="ml-val good">User + Item Embeddings</span>
+                    </div>
+                    <div class="ml-metric-row highlight-row">
+                        <span class="param-label">Routing <button class="param-help" data-tip="When a request comes in, the system randomly sends half the users to Model V1 and the other half to Model V2. This is called A/B Testing — it lets us measure which model actually performs better in the real world before fully switching over.">?</button></span>
+                        <span class="ml-val good">50/50 A/B Split</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pipeline Flow -->
+        <section class="glass-panel">
+            <h2>🔄 End-to-End ML Pipeline</h2>
+            <p class="section-sub">Every step that happens when a recommendation is generated</p>
+            <div class="pipeline-flow">
+                <div class="pipeline-step">
+                    <div class="pipeline-icon">📥</div>
+                    <div class="pipeline-label">Raw Data</div>
+                    <div class="pipeline-desc" id="pipeline-raw-desc">Amazon Electronics Review CSV</div>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="pipeline-icon">🔧</div>
+                    <div class="pipeline-label">Preprocessing</div>
+                    <div class="pipeline-desc">Filter users &gt; 5 reviews, build interaction matrix</div>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="pipeline-icon">🏋️</div>
+                    <div class="pipeline-label">Training</div>
+                    <div class="pipeline-desc">ALS on sparse CSR matrix, 80/20 train/test split</div>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="pipeline-icon">📦</div>
+                    <div class="pipeline-label">MLflow Registry</div>
+                    <div class="pipeline-desc">Model artifact versioning &amp; parameter logging</div>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="pipeline-icon">⚡</div>
+                    <div class="pipeline-label">Serving</div>
+                    <div class="pipeline-desc">FastAPI + Redis cache (&lt;15ms P99 latency)</div>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="pipeline-icon">📊</div>
+                    <div class="pipeline-label">A/B Monitor</div>
+                    <div class="pipeline-desc">Live CTR tracking via Redis counters</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Model State -->
+        <section class="glass-panel">
+            <div class="section-header">
+                <h2>📡 Live Model State</h2>
+                <button id="refresh-stats-btn" class="secondary-btn">🔄 Refresh</button>
+            </div>
+            <div class="live-stats-grid" id="live-stats-grid">
+                <div class="live-stat-card"><div class="live-stat-label">API Status</div><div class="live-stat-val" id="ls-status">Checking...</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">Models Loaded</div><div class="live-stat-val" id="ls-model">—</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">Redis Cache</div><div class="live-stat-val" id="ls-redis">—</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">Total Users</div><div class="live-stat-val" id="ls-users">—</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">Total Items</div><div class="live-stat-val" id="ls-items">—</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">Interactions</div><div class="live-stat-val" id="ls-interactions">—</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">Matrix Sparsity</div><div class="live-stat-val" id="ls-sparsity">—</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">V1 Impressions</div><div class="live-stat-val" id="ls-v1-imp">—</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">V2 Impressions</div><div class="live-stat-val" id="ls-v2-imp">—</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">V1 CTR</div><div class="live-stat-val" id="ls-v1-ctr">—</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">V2 CTR</div><div class="live-stat-val" id="ls-v2-ctr">—</div></div>
+                <div class="live-stat-card"><div class="live-stat-label">Current Winner</div><div class="live-stat-val gradient-text" id="ls-winner">—</div></div>
+            </div>
+        </section>
+
+        <!-- Experiment with the Model -->
+        <section class="glass-panel">
+            <h2>🔬 Live Inference Experiment</h2>
+            <p class="section-sub">Run direct inference against both model variants and compare their output side-by-side.</p>
+            <div class="experiment-controls">
+                <div class="input-wrapper">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="ml-user-id" placeholder="Enter a user_id from the active dataset" value="A2SUAM1J3GNN3B">
+                </div>
+                <button class="primary-btn" id="run-v1-btn">Run V1 (SVD) →</button>
+                <button class="primary-btn v2-btn" id="run-v2-btn">Run V2 (Hybrid) →</button>
+            </div>
+            <div class="experiment-results">
+                <div class="exp-panel">
+                    <h3>V1 — SVD Output <span class="ml-tag">Collaborative</span></h3>
+                    <div id="v1-output" class="exp-output">Run the model to see output...</div>
+                </div>
+                <div class="exp-panel">
+                    <h3>V2 — Hybrid Output <span class="ml-tag v2">Hybrid</span></h3>
+                    <div id="v2-output" class="exp-output">Run the model to see output...</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== A/B STATS MODAL ===================== -->
+    <div id="stats-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <span class="close-btn">&times;</span>
+            <h2>📊 Live A/B Testing Metrics</h2>
+            <div class="stats-grid">
+                <div class="stat-card v1-card">
+                    <h3>Variant 1 (SVD)</h3>
+                    <div class="stat-row"><span>Impressions:</span><span id="v1-impressions">0</span></div>
+                    <div class="stat-row"><span>Clicks:</span><span id="v1-clicks">0</span></div>
+                    <div class="ctr-bar-wrapper">
+                        <div class="stat-row highlight"><span>CTR:</span><span id="v1-ctr">0.0%</span></div>
+                        <div class="ctr-bar"><div id="v1-ctr-bar" class="ctr-fill v1-fill" style="width: 0%"></div></div>
+                    </div>
+                </div>
+                <div class="stat-card v2-card">
+                    <h3>Variant 2 (Hybrid)</h3>
+                    <div class="stat-row"><span>Impressions:</span><span id="v2-impressions">0</span></div>
+                    <div class="stat-row"><span>Clicks:</span><span id="v2-clicks">0</span></div>
+                    <div class="ctr-bar-wrapper">
+                        <div class="stat-row highlight"><span>CTR:</span><span id="v2-ctr">0.0%</span></div>
+                        <div class="ctr-bar"><div id="v2-ctr-bar" class="ctr-fill v2-fill" style="width: 0%"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="winner-banner">
+                Current Winner: <span id="current-winner" class="gradient-text">Need more data</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js?v=10"></script>
+</body>
+</html>
