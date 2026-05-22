@@ -8,12 +8,16 @@ Nexus is an AI-powered product recommendation platform featuring live A/B testin
 ### 🛍️ End User Experience
 Shoppers receive tailored product recommendations with a beautiful, dynamic interface, allowing them to discover their next obsession seamlessly.
 
-![End User Recommendations](./screenshots/end_user_recommendations.png)
+![Homepage](./screenshots/homepage1.png)
+
+![Product Recommendation](./screenshots/product_recomendation.png)
 
 ### 💼 Business & Integration
 For merchants and developers, Nexus provides a simple 3-step integration process to fetch personalized recommendations, track customer clicks (A/B Signals), and monitor live A/B dashboards.
 
-![3-Step Integration](./screenshots/business_integration.png)
+![3-Step Integration 1](./screenshots/business_integration_1.png)
+
+![3-Step Integration 2](./screenshots/business_integration_2.png)
 
 Test the recommendation engine directly with no setup required using the built-in Live API Tester.
 
@@ -25,7 +29,11 @@ Data scientists get a dedicated suite of tools to peek under the hood of the rec
 **1. Dataset Exploration & Pandas Integration**
 View the raw synthetic datasets or upload custom CSVs. Dive deeper into the data by running live Pandas DataFrame methods (like `df.describe()` and `df.info()`) directly from the dashboard.
 
-![Dataset Exploration](./screenshots/dataset_exploration.png)
+![Dataset Exploration 1](./screenshots/dataset_exploration_1.png)
+
+![Dataset Exploration 2](./screenshots/dataset_exploration_2.png)
+
+![Dataset Exploration 3](./screenshots/dataset_exploration_3.png)
 
 **2. Model Insights & ML Lab**
 Review side-by-side architecture parameters and offline performance metrics (Precision, Recall, NDCG) for each model variant. Visualize the end-to-end ML pipeline journey from raw data to Redis caching.
